@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+build/
+dist/
+
+# Python
+venv/
+__pycache__/
+
+# Environment files
+.env
+firebase-service-account.json
+
+# Logs
+*.log
