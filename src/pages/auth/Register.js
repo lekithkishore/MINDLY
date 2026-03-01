@@ -143,23 +143,17 @@ const Register = () => {
             {role !== USER_ROLES.COUNSELLOR && (
               <div>
                 <label htmlFor="collegeEmail" className="block text-sm font-medium text-gray-700">
-                  College Email (for verification)
+                  College Email (optional - same as email above)
                 </label>
                 <div className="mt-1 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <GraduationCap className="h-5 w-5 text-gray-400" />
                   </div>
                   <input
-                    {...register('collegeEmail', {
-                      required: 'College email is required',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@srmap\.edu\.in$/i,
-                        message: 'Please use your college email (@srmap.edu.in)'
-                      }
-                    })}
+                    {...register('collegeEmail')}
                     type="email"
                     className="input-field pl-10"
-                    placeholder="Enter your college email"
+                    placeholder="Enter your college email (optional)"
                   />
                 </div>
                 {errors.collegeEmail && (
