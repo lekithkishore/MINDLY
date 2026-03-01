@@ -99,9 +99,12 @@ export const registerUser = async (email, password, userData) => {
 // Sign in user
 export const signInUser = async (email, password) => {
   try {
+    console.log('Attempting login with Firebase project:', process.env.REACT_APP_FIREBASE_PROJECT_ID);
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log('Login successful:', userCredential.user.uid);
     return { success: true, user: userCredential.user };
   } catch (error) {
+    console.error('Login failed:', error);
     return { success: false, error: error.message };
   }
 };
