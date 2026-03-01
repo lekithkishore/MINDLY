@@ -1032,20 +1032,31 @@ export const getAssessments = async (userId) => {
 };
 
 // Mood score functions
+  // Mood score functions
+export const addMoodScore = async (
+  userId,
+  score,
+  mood = null,
+  note = "",
+  recordedAt = null
+) => {
   try {
     const docRef = await addDoc(collection(db, COLLECTIONS.MOOD_SCORES), {
       userId,
-      score, // e.g., 0-100 or 1-5 scale
-      mood: mood || null, // optional label like 'happy', 'sad'
-      note, // optional free text
+      score,
+      mood: mood || null,
+      note,
       recordedAt: recordedAt ? recordedAt : serverTimestamp(),
       createdAt: serverTimestamp()
     });
+
     return { success: true, id: docRef.id };
+
   } catch (error) {
     return { success: false, error: error.message };
   }
 };
+
 
 export const getMoodScores = async (userId, maxItems = 30) => {
   try {
@@ -1230,7 +1241,7 @@ export const createCounsellorResource = async (ownerId, { title, url, descriptio
   }
 };
 
-export const setDoc = async (docId, data) => {
+export const setCounsellorResourceDoc = async (docId, data) => {
   try {
     await setDoc(doc(db, 'resources_counsellors', docId), data);
     return { success: true };
