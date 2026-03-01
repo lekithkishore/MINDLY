@@ -1030,7 +1030,6 @@ export const getAssessments = async (userId) => {
     return { success: false, error: error.message };
   }
 };
-};
 
 // Mood score functions
   try {
