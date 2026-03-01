@@ -1030,7 +1030,6 @@ export const getAssessments = async (userId) => {
 };
 
 // Mood score functions
-export const addMoodScore = async ({ userId, score, mood, note = null, recordedAt = null }) => {
   try {
     const docRef = await addDoc(collection(db, COLLECTIONS.MOOD_SCORES), {
       userId,
