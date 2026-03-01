@@ -88,8 +88,10 @@ export const registerUser = async (email, password, userData) => {
       await setDoc(doc(db, 'students', user.uid), studentDoc);
     }
     
+    console.log('User created successfully:', user.uid);
     return { success: true, user };
   } catch (error) {
+    console.error('Registration error:', error);
     return { success: false, error: error.message };
   }
 };
