@@ -1229,6 +1229,15 @@ export const createCounsellorResource = async (ownerId, { title, url, descriptio
   }
 };
 
+export const setDoc = async (docId, data) => {
+  try {
+    await setDoc(doc(db, 'resources_counsellors', docId), data);
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
 export const updateCounsellorResource = async (id, data) => {
   try {
     await updateDoc(doc(db, 'resources_counsellors', id), { ...data, updatedAt: serverTimestamp() });

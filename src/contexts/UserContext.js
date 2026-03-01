@@ -20,10 +20,8 @@ export const UserProvider = ({ children }) => {
 
   // Load user-specific data
   useEffect(() => {
-    if (user && userData?.role === 'student') {
-      loadUserData();
-    }
-  }, [user, userData]);
+    loadUserData();
+  }, [user, loadUserData]);
 
   // Real-time subscription for journal entries for the logged-in user
   useEffect(() => {
