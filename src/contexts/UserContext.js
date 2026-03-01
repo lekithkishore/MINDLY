@@ -18,6 +18,21 @@ export const UserProvider = ({ children }) => {
   const [journalEntries, setJournalEntries] = useState([]);
   const [loading, setLoading] = useState(false);
 
+   const loadUserData = async () => {
+    setLoading(true);
+    try {
+      // Load assessments
+      const assessmentsResult = await getAssessments(user.uid);
+      if (assessmentsResult.success) {
+        setAssessments(assessmentsResult.data);
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   // Load user-specific data
   useEffect(() => {
     loadUserData();
@@ -49,20 +64,7 @@ export const UserProvider = ({ children }) => {
     };
   }, [user?.uid]);
 
-  const loadUserData = async () => {
-    setLoading(true);
-    try {
-      // Load assessments
-      const assessmentsResult = await getAssessments(user.uid);
-      if (assessmentsResult.success) {
-        setAssessments(assessmentsResult.data);
-      }
-    } catch (error) {
-      console.error('Error loading user data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+ 
 
   const addAssessment = (assessment) => {
     setAssessments(prev => [assessment, ...prev]);
