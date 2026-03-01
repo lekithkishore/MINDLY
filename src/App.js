@@ -41,7 +41,7 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles.length > 0 && !allowedRoles.includes(userData?.role)) {
+  if (allowedRoles.length > 0 && userData?.role && !allowedRoles.includes(userData?.role)) {
     return <AccessDenied />;
   }
 
