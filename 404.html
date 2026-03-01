@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Single Page App for GitHub Pages</title>
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/pwa-for-github-pages
+    (function(l){
+      if (l.search[1] === '/') {
+        var re = new RegExp(l.search[1].substr(1) + '=(.*)$');
+        var search = l.search.substr(1).match(re);
+        if (search) {
+          var new_path = '/' + search[1];
+          history.replaceState(null, null, new_path);
+        }
+      }
+    })(window.location)
+  </script>
+</head>
+<body>
+  <script>
+    // Redirect to index.html
+    window.location.replace('/MINDLY/' + window.location.search);
+  </script>
+</body>
+</html>
