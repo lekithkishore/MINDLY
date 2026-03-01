@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useAuth } from './AuthContext';
 import { getAssessments, subscribeJournalEntries } from '../firebase/firestore';
 
@@ -13,30 +13,34 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const { user, userData } = useAuth();
+  const { user } = useAuth();
   const [assessments, setAssessments] = useState([]);
   const [journalEntries, setJournalEntries] = useState([]);
   const [loading, setLoading] = useState(false);
 
-   const loadUserData = async () => {
+  const loadUserData = useCallback(async () => {
     setLoading(true);
     try {
       // Load assessments
-      const assessmentsResult = await getAssessments(user.uid);
-      if (assessmentsResult.success) {
-        setAssessments(assessmentsResult.data);
+      if (user && user.uid) {
+        const assessmentsResult = await getAssessments(user.uid);
+        if (assessmentsResult.success) {
+          setAssessments(assessmentsResult.data);
+        }
       }
     } catch (error) {
       console.error('Error loading user data:', error);
     } finally {
       setLoading(false);
     }
-  };
-  
+  }, [user?.uid]);
+
   // Load user-specific data
   useEffect(() => {
-    loadUserData();
-  }, [user, loadUserData]);
+    if (user && user.uid) {
+      loadUserData();
+    }
+  }, [user?.uid, loadUserData]);
 
   // Real-time subscription for journal entries for the logged-in user
   useEffect(() => {
@@ -63,8 +67,6 @@ export const UserProvider = ({ children }) => {
       if (unsub) unsub();
     };
   }, [user?.uid]);
-
- 
 
   const addAssessment = (assessment) => {
     setAssessments(prev => [assessment, ...prev]);
