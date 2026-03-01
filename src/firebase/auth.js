@@ -70,6 +70,7 @@ export const registerUser = async (email, password, userData) => {
         isVerified: false,
       };
       await setDoc(doc(db, 'users', user.uid), userDoc);
+      console.log('User document created in Firestore');
 
       // Students collection holds demographics for symmetry
       const studentDoc = {
@@ -86,6 +87,7 @@ export const registerUser = async (email, password, userData) => {
         createdAt: new Date()
       };
       await setDoc(doc(db, 'students', user.uid), studentDoc);
+      console.log('Student document created in Firestore');
     }
     
     console.log('User created successfully:', user.uid);
