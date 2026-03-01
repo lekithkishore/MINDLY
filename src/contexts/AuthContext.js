@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     userData,
     loading,
     setUserData,
-    emailVerified: !!auth.currentUser?.emailVerified,
+    emailVerified: !!user?.emailVerified,
     refreshUser: async () => {
       if (auth.currentUser) {
         await auth.currentUser.reload();
