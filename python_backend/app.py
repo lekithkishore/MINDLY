@@ -18,6 +18,9 @@ from assessment.phq9_gad7 import PHQ9GAD7Assessment
 # Load environment variables
 load_dotenv()
 
+# Version bump for Railway redeploy
+VERSION = "1.0.1"
+
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
