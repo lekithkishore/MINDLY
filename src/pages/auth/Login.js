@@ -146,6 +146,7 @@ const Login = () => {
                 type="submit"
                 disabled={loading}
                 className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => console.log('Sign-in button clicked!')}
               >
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>
