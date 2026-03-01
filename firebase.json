@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "mindly-default"
+    "default": "mindly-default-861b7"
   },
   "firestore": {
     "rules": "firestore.rules",
