@@ -43,7 +43,7 @@ service cloud.firestore {
     // USERS collection: doc id should equal the user's uid
     match /users/{userId} {
       allow read: if isSignedIn() && request.auth.uid == userId;
-      allow create: if isSignedIn() && request.auth.uid == request.resource.id;
+      allow create: if isSignedIn() && request.auth.uid == userId;
       allow update, delete: if isSignedIn() && request.auth.uid == userId;
     }
 
