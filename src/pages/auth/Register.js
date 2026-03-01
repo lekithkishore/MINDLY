@@ -43,7 +43,8 @@ const Register = () => {
         };
       }
 
-      const emailForAuth = data.role === USER_ROLES.COUNSELLOR ? data.email : data.collegeEmail;
+      // Use same email for both auth and college email to avoid conflicts
+      const emailForAuth = data.email;
       const result = await registerUser(emailForAuth, data.password, payload);
 
       if (result.success) {
