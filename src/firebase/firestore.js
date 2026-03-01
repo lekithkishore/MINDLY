@@ -1020,7 +1020,9 @@ export const getAssessments = async (userId) => {
     const querySnapshot = await getDocs(q);
     const assessments = [];
     querySnapshot.forEach((doc) => {
-      assessments.push({ id: doc.id, ...doc.data() });
+      if (doc) {
+        assessments.push({ id: doc.id, ...doc.data() });
+      }
     });
     
     return { success: true, data: assessments };
