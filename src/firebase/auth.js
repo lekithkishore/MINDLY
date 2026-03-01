@@ -20,14 +20,7 @@ export const USER_ROLES = {
 export const registerUser = async (email, password, userData) => {
   try {
     const role = (userData.role || USER_ROLES.STUDENT).toLowerCase();
-    // Enforce college domain for students only
-    if (role === USER_ROLES.STUDENT) {
-      const allowed = (process.env.REACT_APP_ALLOWED_EMAIL_DOMAIN || 'srmap.edu.in').toLowerCase();
-      const emailLower = String(userData.collegeEmail || email || '').toLowerCase().trim();
-      if (!emailLower.endsWith(`@${allowed}`)) {
-        throw new Error(`Please use your college email (@${allowed}) to register.`);
-      }
-    }
+    // Email domain restriction removed - allow any email
 
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
