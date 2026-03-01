@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/MINDLY/static/css/main.ab3229b5.css",
-    "main.js": "/MINDLY/static/js/main.f848e2b5.js",
+    "main.js": "/MINDLY/static/js/main.6ceea809.js",
     "index.html": "/MINDLY/index.html",
     "main.ab3229b5.css.map": "/MINDLY/static/css/main.ab3229b5.css.map",
-    "main.f848e2b5.js.map": "/MINDLY/static/js/main.f848e2b5.js.map"
+    "main.6ceea809.js.map": "/MINDLY/static/js/main.6ceea809.js.map"
   },
   "entrypoints": [
     "static/css/main.ab3229b5.css",
-    "static/js/main.f848e2b5.js"
+    "static/js/main.6ceea809.js"
   ]
 }
